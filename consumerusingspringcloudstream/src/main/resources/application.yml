@@ -1,0 +1,17 @@
+server:
+  port: 8084
+
+spring:
+  cloud:
+    function:
+      definition: processRiderLocation;processRiderStatus
+    stream:
+      bindings:
+        processRiderLocation-in-0:
+          destination: track-cloud-stream
+          content-type: application/json
+        processRiderStatus-in-0:
+          destination: my-topic-new
+      kafka:
+        binder:
+          brokers: localhost:9092

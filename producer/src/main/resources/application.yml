@@ -7,3 +7,11 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.add.type.headers: false
+
+
+
+# Configuration for the Spring cloud Function
+  cloud:
+    function:
+      definition: uppercase
+    function.web.path: /uppercase

@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+spring:
+# Configuration for the Spring cloud Function
+  cloud:
+    function:
+      definition: sendRiderLocation;sendRiderStatus
+    stream:
+      function:
+        definition: sendRiderLocation
+      bindings:
+        sendRiderLocation-out-0:
+          destination: track-cloud-stream
+          content-type: application/json
+        sendRiderStatus-out-0:
+          destination: my-topic-new
+          content-type: text/plain
+      poller:
+        fixed-delay: 1000
+      kafka:
+        binder:
+          brokers: localhost:9092
+          
