@@ -36,5 +36,11 @@ public class KafkaConsumer {
 	}
 	
 	//Received Message 4: Hello Kafka
+	
 
+	@KafkaListener(topics = "track", groupId = "location_group", containerFactory = "locationKafkaListenerFactory")
+    public void consumeLocation(RiderLocation location) {
+        System.out.println("📍 Received location: " + location.getRiderId() + " , " + location.getLatitude() + " , " + location.getLongitude());
+        System.out.println("Received Location : " + location);
+    }
 }
